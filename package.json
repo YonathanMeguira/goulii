@@ -10,7 +10,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.3"
+    "axios": "^0.21.1",
+    "express": "^4.16.3",
+    "googleapis": "^39.2.0"
   },
   "devDependencies": {
     "@types/express": "^4.16.0",

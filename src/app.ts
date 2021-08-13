@@ -1,12 +1,17 @@
 import express from 'express';
-
-const app: express.Application = express();
+import { Request, Response } from 'express';
+import { getStats } from './covid.service';
+const app = express();
 const port: number = Number(process.env.PORT) || 3001;
 
-app.listen(port, (err: Error) => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log('NODE_ENV =', process.env.NODE_ENV);
+app.listen(port);
+
+
+app.get('/covid', async (request, response, next) => {
+  try { 
+    response.send(await getStats());
+  } catch(error) {
+    return next(error);
   }
-});
+})
+
