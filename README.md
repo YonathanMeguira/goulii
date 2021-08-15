@@ -2,4 +2,4 @@
 Daily update on last day COVID-19 figures by SMS.
 
 
-![Image of Yaktocat](https://ibb.co/syLqyrD)
+![Image of Yaktocat](https://i.ibb.co/HnmqnQM/logo.png)
