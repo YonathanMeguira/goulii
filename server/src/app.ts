@@ -59,13 +59,13 @@ app.get('/start', async(request, response, next) => {
 })
 
 
-app.get('/by-day', async(request, response, next) => {
-  try {
-    response.send(await getCasesByDay());
-  } catch (error) {
-    return next(error);
-  }
-})
+// app.get('/by-day', async(request, response, next) => {
+//   try {
+//     response.send(await getCasesByDay());
+//   } catch (error) {
+//     return next(error);
+//   }
+// })
 
 
 

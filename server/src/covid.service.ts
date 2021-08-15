@@ -15,19 +15,19 @@ export async function getStats(): Promise<CountryStatResponse[]> {
   return data.map(({ Date, Cases }) => ({ cases: Cases, date: humanizeDate(Date) }));
 }
 
-export async function getCasesByDay(): Promise<CountryStatResponse[]> {
-  const stats = await getStats();
-  return stats.map((e, i) => {
-    if (i < stats.length) {
-      const [today, yesterday] = [e[i + 1].cases, e[i].cases || 0];
-      const newCases = !!(yesterday && today) ? today - yesterday : 0;
+// export async function getCasesByDay(): Promise<CountryStatResponse[]> {
+//   const stats = await getStats();
+//   return stats.map((e, i) => {
+//     if (i < stats.length) {
+//       const [today, yesterday] = [e[i + 1].cases, e[i].cases || 0];
+//       const newCases = !!(yesterday && today) ? today - yesterday : 0;
 
-    }
-    return { cases: newCases, date: e[i].date };
+//     }
+//     return { cases: newCases, date: e[i].date };
 
-  })
+//   })
 
-}
+// }
 
 export async function getYesterday(): Promise<string> {
   const stats = await getGlobalStats();

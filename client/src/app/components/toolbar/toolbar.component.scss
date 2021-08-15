@@ -1,0 +1,12 @@
+mat-toolbar {
+    background-color: darkslateblue;
+    color: white;
+}
+
+.nav-item {
+    font-weight: 400;
+    margin-right: 10px;
+    :first-child {
+        margin-right: 10px;
+    }
+}
