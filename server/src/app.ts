@@ -1,5 +1,5 @@
 import express from 'express';
-import { getStats, getYesterday } from './covid.service';
+import { getCasesByDay, getStats, getYesterday } from './covid.service';
 import { startDay } from './start-day.service';
 import { sendMessage } from './twilio.service';
 import { fetchShabbathTime, getZmanim } from './zmanim.service';
@@ -8,6 +8,12 @@ const port: number = Number(process.env.PORT) || 3001;
 
 app.listen(port);
 
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.get('/covid', async (request, response, next) => {
   try { 
@@ -47,6 +53,15 @@ app.get('/shabbath', async(request, response, next) => {
 app.get('/start', async(request, response, next) => {
   try {
     response.sendStatus(await startDay());
+  } catch (error) {
+    return next(error);
+  }
+})
+
+
+app.get('/by-day', async(request, response, next) => {
+  try {
+    response.send(await getCasesByDay());
   } catch (error) {
     return next(error);
   }
