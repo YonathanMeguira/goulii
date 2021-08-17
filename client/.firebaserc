@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "goulii": {
+      "hosting": {
+        "jmm": [
+          "goulii"
+        ]
+      }
+    }
+  }
+}

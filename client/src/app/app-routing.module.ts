@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { StartDayComponent } from './components/start-day/start-day.component';
+import { LogListComponent } from './components/log-list/log-list.component';
 
 const routes: Routes = [
-  {path: 'start-day', component: StartDayComponent}
+  {path: 'list', component: LogListComponent}
 ];
 
 @NgModule({

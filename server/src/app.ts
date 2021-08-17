@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { addLog, sendAlert } from './firebase.service';
+import { getLogs, getUser, processLog } from './firebase.service';
 
 const app = express();
 const port: number = Number(process.env.PORT) || 3001;
@@ -15,6 +15,17 @@ app.use(express.json());
  * 1. sends alert via whatsapp
  * 2. adds alert on firebase
  * 3. if Alert already there increase the invokation times
+ * 
+ * 
+ * user goes on the platform, adds log and associates user to it.
+ * in return user gets id.
+ * 
+ * in the client he writes invoke(id);
+ * 
+ * logEvent(users.Jonathan, 'wow this is really bad');
+ * user.Jonathan = '5iNSvvsXLxrlm7vt7l1c';
+ * 
+ * we maintain two tables: users and logs
  */
  
 
@@ -24,25 +35,22 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.post('/add-log', async (request, response) => {
+app.post('/log', async (request, response) => {
   try {
-    const {log, author} = request.body;
-    const id = await addLog(author, log);
-    response.send(id);
+    const {userId, log} = request.body;
+    const operation = await processLog(userId, log);
+    
+    response.sendStatus(200);
   } catch (error) {
     response.sendStatus(405);
   }
 })
 
-
-app.post('/invoke-log', async(request, response) => {
+app.get('/get-logs', async (request, response) => {
   try {
-    const {to, log} = request.body;
-    const mess =  sendAlert(to, log);
-    console.log(mess);
-    await addLog(to, log);
-    response.sendStatus(200);
-  } catch(error) {
+    response.json(await getLogs());
+  } catch (error) {
     response.sendStatus(405);
   }
 })
+

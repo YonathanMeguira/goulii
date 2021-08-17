@@ -1,20 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { AppState, Covid19Stats } from './models';
-import { StateService } from './state.service';
+import { Log } from './models';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({providedIn: 'root'})
 
 export class AppService {
 
-    constructor(private http: HttpClient, private stateService: StateService) {}
+    constructor(private http: HttpClient) {}
 
-    getTodaySummary(): void {
-        this.http
-        .get<Covid19Stats[]>(this.getEndpoint('covid'))
-        .pipe(tap(stats => this.stateService.update('covidStats', stats))).subscribe();
+
+    getLogs(): Observable<any> {
+        const path = this.getEndpoint('get-logs');
+        return this.http.get(path);
     }
 
     private getEndpoint(path: string): string {

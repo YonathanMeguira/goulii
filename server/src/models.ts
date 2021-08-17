@@ -1,11 +1,19 @@
-export type LogAlert = {
-    phones: string[];
-    logId: string;
+export type Log = {
+    id: string;
+    log: string;
+    userId: string;
+    invokedTimes: number;
+    lastInvoked?: number;
+    createTime: number;
 }
 
-export type Alert = {
-    phones: string[];
-    log: string;
-    invokedTimes: number;
-    lastInvoked: number;
+export type Contact = {
+    name: string;
+    phone: string;
+}
+
+
+export const mockContact: Contact = {
+    name: 'jonathan',
+    phone: '+972586288454'
 }

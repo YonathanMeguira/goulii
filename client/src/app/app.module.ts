@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { StartDayComponent } from './components/start-day/start-day.component';
+import { LogListComponent } from './components/log-list/log-list.component';
 
 const material = [MatButtonModule, MatToolbarModule];
 
@@ -17,7 +17,7 @@ const material = [MatButtonModule, MatToolbarModule];
   declarations: [
     AppComponent,
     ToolbarComponent,
-    StartDayComponent
+    LogListComponent
   ],
   imports: [
     BrowserModule,
