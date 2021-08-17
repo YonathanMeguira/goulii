@@ -1,3 +1,3 @@
-# Whatsapp Logging Alerts
+# WhatsApp Logging Alerts
 
 ![Image of Yaktocat](https://i.ibb.co/HnmqnQM/logo.png)
