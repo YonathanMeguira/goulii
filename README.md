@@ -1,4 +1,3 @@
-# Personal Assistant
-Daily Automated tasks
+# Whatsapp Logging Alerts
 
 ![Image of Yaktocat](https://i.ibb.co/HnmqnQM/logo.png)
