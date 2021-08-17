@@ -78,6 +78,11 @@ export async function getLogs() {
     return docs? docs.map(doc => doc.data()) : [];
 }
 
+export async function getUsers() {
+    const {docs} = await collection('users').get();
+    return docs? docs.map(doc => doc.data()) : [];
+}
+
 async function updateLog(logId: string) {
     return collection('logs').doc(logId).update({
         lastInvoked: new Date().getTime(),

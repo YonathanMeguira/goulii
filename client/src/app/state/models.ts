@@ -5,16 +5,19 @@ export type Log = {
     invokedTimes: number;
     lastInvoked?: number;
     createTime: number;
+    user?: Contact;
 }
 
 export type Contact = {
     name: string;
+    id: string;
     phone: string;
 }
 
 
 export const mockContact: Contact = {
     name: 'jonathan',
+    id: '5iNSvvsXLxrlm7vt7l1c',
     phone: '+972586288454'
 }
 

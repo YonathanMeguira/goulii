@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from 'src/app/state/app.service';
+import { Contact, Log } from 'src/app/state/models';
+import { StateService } from 'src/app/state/state.service';
 
 @Component({
   selector: 'app-log-list',
@@ -7,11 +8,13 @@ import { AppService } from 'src/app/state/app.service';
   styleUrls: ['./log-list.component.scss']
 })
 export class LogListComponent implements OnInit {
-
-  constructor(private service: AppService) { }
+  logs: Log[] = [];
+  users: any = {};
+  constructor(private state: StateService) { }
 
   ngOnInit(): void {
-    this.service.getLogs().subscribe(value => console.log(value));
+    this.state.select('logs')
+      .subscribe((logs: any) => this.logs = logs);
   }
 
 }

@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { getLogs, getUser, processLog } from './firebase.service';
+import { getLogs, getUsers, processLog } from './firebase.service';
 
 const app = express();
 const port: number = Number(process.env.PORT) || 3001;
@@ -38,8 +38,7 @@ app.use(function (req, res, next) {
 app.post('/log', async (request, response) => {
   try {
     const {userId, log} = request.body;
-    const operation = await processLog(userId, log);
-    
+    await processLog(userId, log);
     response.sendStatus(200);
   } catch (error) {
     response.sendStatus(405);
@@ -49,6 +48,14 @@ app.post('/log', async (request, response) => {
 app.get('/get-logs', async (request, response) => {
   try {
     response.json(await getLogs());
+  } catch (error) {
+    response.sendStatus(405);
+  }
+})
+
+app.get('/get-users', async (request, response) => {
+  try {
+    response.json(await getUsers());
   } catch (error) {
     response.sendStatus(405);
   }
