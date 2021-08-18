@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Contact, Log } from 'src/app/state/models';
+import { Log } from 'src/app/state/models';
 import { StateService } from 'src/app/state/state.service';
 
 @Component({
@@ -9,12 +9,11 @@ import { StateService } from 'src/app/state/state.service';
 })
 export class LogListComponent implements OnInit {
   logs: Log[] = [];
-  users: any = {};
+  displayedColumns: string[] = ['log', 'userName', 'invokedTimes', 'lastInvoked', 'createTime'];
   constructor(private state: StateService) { }
 
   ngOnInit(): void {
-    this.state.select('logs')
-      .subscribe((logs: any) => this.logs = logs);
+    this.state.select('logs').subscribe(logs => this.logs = logs as Log[])
   }
 
 }

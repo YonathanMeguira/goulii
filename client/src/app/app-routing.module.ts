@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LogListComponent } from './components/log-list/log-list.component';
 
 const routes: Routes = [
-  {path: 'list', component: LogListComponent}
+  {path: 'logs', component: LogListComponent}
 ];
 
 @NgModule({

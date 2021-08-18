@@ -9,7 +9,6 @@ import { AppService } from './state/app.service';
 export class AppComponent {
 
   constructor(private appService: AppService) {
-    this.appService.getUsers();
-    this.appService.getLogs();
+    this.appService.init();
   }
 }

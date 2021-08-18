@@ -14,14 +14,20 @@ export type Contact = {
     phone: string;
 }
 
+export const CONTACTS = {
+    JONATHAN: {
+        name: 'jonathan',
+        id: '5iNSvvsXLxrlm7vt7l1c',
+        phone: '+972586288454'
+    }
+}
 
-export const mockContact: Contact = {
-    name: 'jonathan',
-    id: '5iNSvvsXLxrlm7vt7l1c',
-    phone: '+972586288454'
+
+export type ContactMap = {
+    [key: string]: Contact
 }
 
 export type AppState = {
     logs: Log[];
-    users: Contact[];
+    users: ContactMap;
 }

@@ -37,7 +37,7 @@ export async function processLog(userId: string, log: string) {
          */
         const logData: Log = await getLog(userId, log);
 
-        if (!!logData) {
+        if (logData) {
             // increment the number of invokation and alert the user
             await updateLog(logData.id);
             await sendMessage(user.phone, logData.log)  
@@ -80,7 +80,11 @@ export async function getLogs() {
 
 export async function getUsers() {
     const {docs} = await collection('users').get();
-    return docs? docs.map(doc => doc.data()) : [];
+    let map = {};
+    if (docs && docs.length) {
+        docs.forEach(ref => map[ref.data().id] = ref.data())
+    } 
+    return map;
 }
 
 async function updateLog(logId: string) {

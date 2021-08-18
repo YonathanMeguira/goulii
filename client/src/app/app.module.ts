@@ -11,8 +11,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { LogListComponent } from './components/log-list/log-list.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
+import {MatTableModule} from '@angular/material/table';
 
-const material = [MatButtonModule, MatToolbarModule];
+const material = [MatButtonModule, MatToolbarModule, MatTableModule];
 
 @NgModule({
   declarations: [
