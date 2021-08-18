@@ -18,7 +18,7 @@ export class LogListComponent implements OnInit {
   }
 
   logEvent() {
-    this.appService.log(CONTACTS.JONATHAN, 'Account ID 4592 was deleted...').subscribe(v => console.log(v));
+    this.appService.log(CONTACTS.JONATHAN, 'Johnny got a new laptop').subscribe(v => console.log(v));
   }
 
 }
