@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { ContactMap, CONTACTS, Log } from './models';
+import { Contact, ContactMap, Log } from './models';
 import { StateService } from './state.service';
 
 @Injectable({ providedIn: 'root' })
@@ -41,8 +41,8 @@ export class AppService {
         return this.http.get<ContactMap>(path)
     }
 
-    addLog(userId = CONTACTS.JONATHAN.id, log: string) {
-        return this.http.post(this.getEndpoint('log'), { userId, log });
+    log({id}: Contact, log: string) {
+        return this.http.post(this.getEndpoint('log'), { userId: id, log });
     }
 
 
@@ -56,7 +56,7 @@ export class AppService {
     private humanizeDate(date: number): string {
         if (date) {
             const dateObj = new Date(date);
-            return `${dateObj.getDate()}/${dateObj.getMonth()}/${dateObj.getFullYear()}`;
+            return `${dateObj.getDate()}/${dateObj.getMonth()}/${dateObj.getFullYear()} at ${dateObj.getHours()}:${dateObj.getMinutes()}`;
         } else {
             return 'N/A';
         }

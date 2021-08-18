@@ -1,4 +1,7 @@
 <div class="d-flex-column flex-1 container">
+    <div class="d-flex justify-content-end mt-3">
+        <button mat-raised-button color="accent" (click)="logEvent()">Test Log Event</button>
+    </div>
     <table mat-table [dataSource]="logs" class="mat-elevation-z8 mt-3">
         <!-- Log Column -->
         <ng-container matColumnDef="log">
@@ -6,8 +9,8 @@
             <td mat-cell *matCellDef="let element"> {{element.log}} </td>
         </ng-container>
 
-         <!-- User Id Column -->
-         <ng-container matColumnDef="userName">
+        <!-- User Id Column -->
+        <ng-container matColumnDef="userName">
             <th mat-header-cell *matHeaderCellDef> User Name </th>
             <td mat-cell *matCellDef="let element"> {{element.user.name}} </td>
         </ng-container>
@@ -18,14 +21,14 @@
             <td mat-cell *matCellDef="let element"> {{element.invokedTimes}} </td>
         </ng-container>
 
-         <!-- Last Invoked Time Column -->
-         <ng-container matColumnDef="lastInvoked">
+        <!-- Last Invoked Time Column -->
+        <ng-container matColumnDef="lastInvoked">
             <th mat-header-cell *matHeaderCellDef> Last Invoked</th>
             <td mat-cell *matCellDef="let element"> {{element.lastInvoked}} </td>
         </ng-container>
 
-          <!-- Creation Time Column -->
-          <ng-container matColumnDef="createTime">
+        <!-- Creation Time Column -->
+        <ng-container matColumnDef="createTime">
             <th mat-header-cell *matHeaderCellDef> Created</th>
             <td mat-cell *matCellDef="let element"> {{element.createTime}} </td>
         </ng-container>

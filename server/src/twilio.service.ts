@@ -1,7 +1,7 @@
 import twilio from "twilio";
 
 const accountSid = 'AC1457a689a7970a16a1696593dd7a2b6a';
-const token = '4455d4886abb4e028de11b58ddd95288';
+const token = 'ca35e7d731d70b6a7ce6d064c5379fd0';
 const client = twilio(accountSid, token);
 
 export function sendMessage(to: string, message: string): Promise<any> {
@@ -12,6 +12,8 @@ export function sendMessage(to: string, message: string): Promise<any> {
       to: `whatsapp:${format(to)}`
     });
 }
+
+
 
 function format(phone: string): string {
   const without0 = phone.substring(1);

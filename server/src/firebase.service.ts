@@ -40,13 +40,22 @@ export async function processLog(userId: string, log: string) {
         if (logData) {
             // increment the number of invokation and alert the user
             await updateLog(logData.id);
-            await sendMessage(user.phone, logData.log)  
+            const message = `"${logData.log}" was invoked ${logData.invokedTimes} times today`;
+            notifyUser(user.phone, message);
         } else {
             await createLog(userId, log);
-            await sendMessage(user.phone, `${log} added to your watch list`);
+            notifyUser(user.phone, `${log} added to your watch list`);
         }
     } else {
         throw new Error('User does not exists');
+    }
+}
+
+async function notifyUser(phone: string, log: string) {
+    try {
+        return sendMessage(phone, log);
+    } catch (error) {
+        return error
     }
 }
 
@@ -74,16 +83,16 @@ async function createLog(userId: string, log: string) {
 }
 
 export async function getLogs() {
-    const {docs} = await collection('logs').get();
-    return docs? docs.map(doc => doc.data()) : [];
+    const { docs } = await collection('logs').get();
+    return docs ? docs.map(doc => doc.data()) : [];
 }
 
 export async function getUsers() {
-    const {docs} = await collection('users').get();
+    const { docs } = await collection('users').get();
     let map = {};
     if (docs && docs.length) {
         docs.forEach(ref => map[ref.data().id] = ref.data())
-    } 
+    }
     return map;
 }
 
